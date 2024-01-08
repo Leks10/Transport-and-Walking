@@ -1,0 +1,29 @@
+/* Common styles for the navigation bar */
+nav {
+    background-color: #333;
+    overflow: hidden;
+}
+
+nav a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Additional styles for other elements can be added here */
+#map {
+    width: 800px;
+    height: 600px;
+}
+
+/* Additional styles for the page content can be added here */
+h1 {
+    color: #333;
+}
+
+a {
+    color: #007BFF;
+}
