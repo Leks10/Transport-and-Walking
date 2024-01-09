@@ -1,60 +1,61 @@
+// Function to convert FIPS code to state name
 function fipsToStateName(fipsCode) {
     const fipsToState = {
-      '01': 'Alabama',
-      '02': 'Alaska',
-      '04': 'Arizona',
-      '05': 'Arkansas',
-      '06': 'California',
-      '08': 'Colorado',
-      '09': 'Connecticut',
-      '10': 'Delaware',
-      '11': 'District of Columbia',
-      '12': 'Florida',
-      '13': 'Georgia',
-      '15': 'Hawaii',
-      '16': 'Idaho',
-      '17': 'Illinois',
-      '18': 'Indiana',
-      '19': 'Iowa',
-      '20': 'Kansas',
-      '21': 'Kentucky',
-      '22': 'Louisiana',
-      '23': 'Maine',
-      '24': 'Maryland',
-      '25': 'Massachusetts',
-      '26': 'Michigan',
-      '27': 'Minnesota',
-      '28': 'Mississippi',
-      '29': 'Missouri',
-      '30': 'Montana',
-      '31': 'Nebraska',
-      '32': 'Nevada',
-      '33': 'New Hampshire',
-      '34': 'New Jersey',
-      '35': 'New Mexico',
-      '36': 'New York',
-      '37': 'North Carolina',
-      '38': 'North Dakota',
-      '39': 'Ohio',
-      '40': 'Oklahoma',
-      '41': 'Oregon',
-      '42': 'Pennsylvania',
-      '44': 'Rhode Island',
-      '45': 'South Carolina',
-      '46': 'South Dakota',
-      '47': 'Tennessee',
-      '48': 'Texas',
-      '49': 'Utah',
-      '50': 'Vermont',
-      '51': 'Virginia',
-      '53': 'Washington',
-      '54': 'West Virginia',
-      '55': 'Wisconsin',
-      '56': 'Wyoming',
+        '01': 'Alabama',
+        '02': 'Alaska',
+        '04': 'Arizona',
+        '05': 'Arkansas',
+        '06': 'California',
+        '08': 'Colorado',
+        '09': 'Connecticut',
+        '10': 'Delaware',
+        '11': 'District of Columbia',
+        '12': 'Florida',
+        '13': 'Georgia',
+        '15': 'Hawaii',
+        '16': 'Idaho',
+        '17': 'Illinois',
+        '18': 'Indiana',
+        '19': 'Iowa',
+        '20': 'Kansas',
+        '21': 'Kentucky',
+        '22': 'Louisiana',
+        '23': 'Maine',
+        '24': 'Maryland',
+        '25': 'Massachusetts',
+        '26': 'Michigan',
+        '27': 'Minnesota',
+        '28': 'Mississippi',
+        '29': 'Missouri',
+        '30': 'Montana',
+        '31': 'Nebraska',
+        '32': 'Nevada',
+        '33': 'New Hampshire',
+        '34': 'New Jersey',
+        '35': 'New Mexico',
+        '36': 'New York',
+        '37': 'North Carolina',
+        '38': 'North Dakota',
+        '39': 'Ohio',
+        '40': 'Oklahoma',
+        '41': 'Oregon',
+        '42': 'Pennsylvania',
+        '44': 'Rhode Island',
+        '45': 'South Carolina',
+        '46': 'South Dakota',
+        '47': 'Tennessee',
+        '48': 'Texas',
+        '49': 'Utah',
+        '50': 'Vermont',
+        '51': 'Virginia',
+        '53': 'Washington',
+        '54': 'West Virginia',
+        '55': 'Wisconsin',
+        '56': 'Wyoming',
     };
-  
     return fipsToState[fipsCode] || 'Unknown';
 }
+
 
 // Set the width and height of the map container
 const width = 1000;
@@ -65,6 +66,12 @@ const svg = d3.select("#map")
     .append("svg")
     .attr("width", width)
     .attr("height", height);
+
+// Create tooltip element
+const tooltip = d3.select("body").append("div")
+    .attr("id", "tooltip")
+    .attr("class", "hidden")
+    .style("position", "absolute");
 
 // Use D3 to directly fetch the topological data of the United States map
 d3.json("https://d3js.org/us-10m.v1.json").then(function (us) {
@@ -86,7 +93,7 @@ d3.json("https://d3js.org/us-10m.v1.json").then(function (us) {
         const railTrailsData = {};
         csvData.forEach(function (d) {
             const stateName = d.State;
-            const numberOfRailTrails = +d.Number_of_Rail_Trails; 
+            const numberOfRailTrails = +d.Number_of_Rail_Trails;
             railTrailsData[stateName] = numberOfRailTrails;
         });
 
@@ -117,6 +124,28 @@ d3.json("https://d3js.org/us-10m.v1.json").then(function (us) {
 
                 // Apply the color to the map path
                 return color;
+            })
+            .on("mouseover", function (event, d) {
+                const stateName = fipsToStateName(d.id);
+                const numberOfRailTrails = railTrailsData[stateName] || 0;
+
+                // Update tooltip content
+                tooltip.html(`<strong>${stateName}</strong><br>Number of Trails: ${numberOfRailTrails}`);
+
+                // Show tooltip in a fixed position to the right of the map
+                const tooltipLeft = width + 10; // Adjust the left position
+                const tooltipTop = height / 2; // Adjust the top position as needed
+
+                tooltip.classed("hidden", false)
+                    .style("left", tooltipLeft + "px")
+                    .style("top", tooltipTop + "px");
+            })
+            .on("mousemove", function (event) {
+                // No need to update tooltip position on mousemove as it's fixed
+            })
+            .on("mouseout", function () {
+                // Hide tooltip on mouseout
+                tooltip.classed("hidden", true);
             });
 
         // Add color legend
@@ -145,7 +174,7 @@ d3.json("https://d3js.org/us-10m.v1.json").then(function (us) {
         });
 
         // Create color legend color boxes
-        const colorScale = d3.scaleSequential(d3.interpolateRgbBasis(["#fee0d2", "#fc9272", "#d73027", "#67000d"])); 
+        const colorScale = d3.scaleSequential(d3.interpolateRgbBasis(["#fee0d2", "#fc9272", "#d73027", "#67000d"]));
 
         colorLegendContainer.selectAll("div.color-box")
             .data(d3.range(0, 1.01, 0.2))
@@ -157,12 +186,5 @@ d3.json("https://d3js.org/us-10m.v1.json").then(function (us) {
             .style("display", "inline-block");
     });
 });
-
-
-
-
-
-
-
 
 

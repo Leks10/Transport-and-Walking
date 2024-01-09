@@ -11,3 +11,17 @@
     left: 50%;
     transform: translateX(-50%);
 }
+
+
+#tooltip {
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 14px;
+    pointer-events: none;
+}
+
+.hidden {
+    display: none;
+}
