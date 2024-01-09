@@ -1,0 +1,62 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    color: #4285f4;
+    margin: 0;
+    padding: 20px 0;
+}
+
+img {
+  display: block;
+  margin: 0 auto;
+}
+
+p {
+    line-height: 1.6;
+}
+
+ul {
+    list-style-type: ethiopic-halehame-sid-et;
+    padding: 50px;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+a {
+    color: #4285f4;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.center {
+    text-align: center;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    #map {
+        width: 100%;
+        height: 300px;
+    }
+
+    .container {
+        padding: 10px;
+    }
+}
