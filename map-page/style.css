@@ -1,0 +1,13 @@
+#map {
+    width: 800px; 
+    height: 600px;
+}
+
+
+
+#color-legend {
+    position: absolute;
+    bottom: 30px; 
+    left: 50%;
+    transform: translateX(-50%);
+}
