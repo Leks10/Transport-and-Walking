@@ -1,3 +1,5 @@
+/* Common styles for both main page and map page */
+
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f4f4f4;
@@ -74,4 +76,31 @@ a:hover {
 .navbar a:hover {
     background-color: #ddd;
     color: black;
+}
+
+/* Styles specific to the map page */
+
+#map {
+    width: 800px; 
+    height: 600px;
+}
+
+#color-legend {
+    position: absolute;
+    bottom: 30px; 
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#tooltip {
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 14px;
+    pointer-events: none;
+}
+
+.hidden {
+    display: none;
 }
