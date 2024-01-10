@@ -1,33 +1,42 @@
 <!DOCTYPE html>
-
 <html lang="en">
-    <head>
-        <title>Demo Website</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="../style.css">
 
-    </head>
+<head>
+    <title>Demo Website</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
 
-    <body>
+<body>
 
-        <div class="navbar">
-            <a href="../index.html">Home</a>
-            <a href="../map-page/index.html">Map Page</a>
-            <a href="../our-team/index.html">Our Team</a>
-        </div>
-        <h1 class="center">Map Dashboard</h1>
+    <div class="navbar">
+        <a href="../index.html">Home</a>
+        <a href="index.html">Map Page</a>
+        <a href="../our-team/index.html">Our Team</a>
+    </div>
+    <h1 class="center">Map Dashboard</h1>
 
-        <p> On this dashboard we will have different maps so that a user can assess at a glance relevant information.  For example, this map shows the number of bike trails available in each state.  This shows a biker who is thinking of moving to a new state which might have the most bike-friendly infrastructure.  In future iterations we will layer additional information relevant to a biker or other user. <p>
+    <p> On this dashboard, we will have different maps so that a user can assess at a glance relevant information.
+        For example, this map shows the number of bike trails available in each state. This shows a biker who is
+        thinking of moving to a new state which might have the most bike-friendly infrastructure. In future iterations
+        we will layer additional information relevant to a biker or other user. </p>
 
-        <div id="map"></div>
-        <div id="tooltip" class="hidden"></div>
-        <div id="color-legend"></div>
-        <script src="https://d3js.org/d3.v7.min.js"></script>
-        <script src="https://d3js.org/topojson.v3.min.js"></script>
-        <script src="main.js"></script>
+    <div id="map"></div>
+    <div id="tooltip" class="hidden"></div>
+    <div id="color-legend"></div>
 
+    <div style="height: 200px;"></div>
 
-    </body>
+    <div id="map2"></div>
+    <div id="tooltip2" class="hidden"></div>
+
+    <div id="color-legend2"></div> <!-- Add a div for the color legend for the second map -->
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://d3js.org/topojson.v3.min.js"></script>
+    <script src="main.js"></script>
+    <script src="map2.js"></script>
+</body>
 
 </html>
