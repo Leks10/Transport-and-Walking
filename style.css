@@ -101,6 +101,17 @@ a:hover {
     pointer-events: none;
 }
 
+/* Styles for the second map's tooltip */
+#tooltip2 {
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 10px;
+    z-index: 1;
+    font-size: 14px;
+    pointer-events: none; /* Ensure the tooltip does not block mouse events */
+}
+
 .hidden {
     display: none;
 }
