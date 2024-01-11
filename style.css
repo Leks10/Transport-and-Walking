@@ -115,3 +115,45 @@ a:hover {
 .hidden {
     display: none;
 }
+
+
+
+/* tiles */
+.tiles {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+.tile {
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+    flex: 1;
+    max-width: 30%;
+    margin: 10px;
+    box-sizing: border-box;
+}
+
+.tile img {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.tile h2 {
+    margin: 10px 0;
+}
+
+.tile p {
+    font-size: 14px;
+}
+
+/* team member */
+.team-member {
+    margin-bottom: 40px;
+}
+
+.team-member img {
+    margin-bottom: 10px;
+}
