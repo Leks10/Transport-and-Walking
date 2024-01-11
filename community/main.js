@@ -90,20 +90,25 @@ d3.json("https://d3js.org/us-10m.v1.json").then(function (us) {
     d3.csv("Bike_Commuter_Data.csv").then(function (csvData) {
         // Convert CSV data to an object with state names as keys
        const Commuters_who_bike = {};
-csvData.forEach(function (d) {
-    const stateName = d.State;
-    const Number_of_Commuters_who_bike = +d.Commuters_who_bike;
-    Commuters_who_bike[stateName] = Number_of_Commuters_who_bike;
-});
+
+
+        csvData.forEach(function (d) {
+            const stateName = d.State;
+            const Number_of_Commuters_who_bike = +d.Commuters_Who_Bike;
+            Commuters_who_bike[stateName] = Number_of_Commuters_who_bike;
+        });
+
 
         // Find the maximum and minimum values of Number_of_Rail_Trails
-        const maxNumberOfCommuters_who_bike = d3.max(csvData, function (d) {
-            return +d.Number_of_Commuters_who_bike;
+        const maxNumber_Of_Commuters_who_bike = d3.max(csvData, function (d) {
+            return +d.Commuters_Who_Bike;
         });
 
-        const minNumberOfCommuters_who_bike = d3.min(csvData, function (d) {
-            return +d.Number_of_Commuters_who_bike;
+        const minNumber_Of_Commuters_who_bike = d3.min(csvData, function (d) {
+            return +d.Commuters_Who_Bike;
         });
+
+        
 
         // Draw map paths and color them based on the normalized Number_of_Commuters_who_bike value
         svg.selectAll("path")
@@ -114,8 +119,10 @@ csvData.forEach(function (d) {
                 const stateName = fipsToStateName(d.id);
                 const Number_of_Commuters_who_bike = Commuters_who_bike[stateName] || 0;
 
+
                 // Normalize the value to be within the range [0, 1] using a square root scale
-                const normalizedValue = Math.sqrt(Number_of_Commuters_who_bike / maxNumberOfCommuters_who_bike);
+                const normalizedValue = Math.sqrt(Number_of_Commuters_who_bike / maxNumber_Of_Commuters_who_bike);
+
 
                 // Use d3.interpolateReds for color interpolation
                 const colorScale = d3.scaleSequential(d3.interpolateReds);
@@ -155,7 +162,7 @@ const numberOfSteps = 5;
 
 // Create a linear scale
 const scale = d3.scaleLinear()
-    .domain([minNumberOfCommuters_who_bike, maxNumberOfCommuters_who_bike])
+    .domain([minNumber_Of_Commuters_who_bike, maxNumber_Of_Commuters_who_bike])
     .nice()
     .range([0, 100]);
 
