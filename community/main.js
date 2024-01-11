@@ -89,26 +89,22 @@ d3.json("https://d3js.org/us-10m.v1.json").then(function (us) {
     // Use D3 to draw map paths and color them based on the normalized Number_of_Commuters_who_Bike value
     d3.csv("Bike_Commuter_Data.csv").then(function (csvData) {
         // Convert CSV data to an object with state names as keys
-       const Commuters_who_bike = {};
-
-
+       const CommutersData = {};
         csvData.forEach(function (d) {
             const stateName = d.State;
-            const Number_of_Commuters_who_bike = +d.Commuters_Who_Bike;
-            Commuters_who_bike[stateName] = Number_of_Commuters_who_bike;
+            const NumberOfCommuters = +d.Commuters_Who_Bike;
+            CommutersData[stateName] = NumberOfCommuters;
         });
 
 
         // Find the maximum and minimum values of Number_of_Rail_Trails
-        const maxNumber_Of_Commuters_who_bike = d3.max(csvData, function (d) {
+        const maxNumberOfCommuters = d3.max(csvData, function (d) {
+            return +d.Commuters_Who_Bike;
+        });
+        const minNumberOfCommuters = d3.min(csvData, function (d) {
             return +d.Commuters_Who_Bike;
         });
 
-        const minNumber_Of_Commuters_who_bike = d3.min(csvData, function (d) {
-            return +d.Commuters_Who_Bike;
-        });
-
-        
 
         // Draw map paths and color them based on the normalized Number_of_Commuters_who_bike value
         svg.selectAll("path")
@@ -117,12 +113,10 @@ d3.json("https://d3js.org/us-10m.v1.json").then(function (us) {
             .attr("d", d3.geoPath())
             .style("fill", function (d) {
                 const stateName = fipsToStateName(d.id);
-                const Number_of_Commuters_who_bike = Commuters_who_bike[stateName] || 0;
-
+                const NumberOfCommuters = CommutersData[stateName] || 0;
 
                 // Normalize the value to be within the range [0, 1] using a square root scale
-                const normalizedValue = Math.sqrt(Number_of_Commuters_who_bike / maxNumber_Of_Commuters_who_bike);
-
+                const normalizedValue = Math.sqrt(NumberOfCommuters / maxNumberOfCommuters);
 
                 // Use d3.interpolateReds for color interpolation
                 const colorScale = d3.scaleSequential(d3.interpolateReds);
@@ -133,22 +127,20 @@ d3.json("https://d3js.org/us-10m.v1.json").then(function (us) {
             })
             .on("mouseover", function (event, d) {
                 const stateName = fipsToStateName(d.id);
-                const Number_of_Commuters_who_bike = Commuters_who_bike [stateName] || 0;
+                const NumberOfCommuters = CommutersData[stateName] || 0;
 
-                // Update tooltip content
-                tooltip.html(`<strong>${stateName}</strong><br>Commuters_who_bike: ${Number_of_Commuters_who_bike}`);
+                // Calculate the percentage based on the maximum value
+                const percentage = (NumberOfCommuters / maxNumberOfCommuters) * 100;
 
-                // Show tooltip in a fixed position to the right of the map
-                const tooltipLeft = width + 10; // Adjust the left position
-                
+                // Update tooltip content with percentage
+                tooltip.html(`<strong>${stateName}</strong><br>Percent of Commuters who Bike to Work: ${Math.round(percentage)}%`);
 
+                // Show tooltip near the mouse position
                 tooltip.classed("hidden", false)
-                    .style("left", tooltipLeft + "px")
-                    .style("top", tooltipTop + "px");
+                    .style("left", event.pageX + 10 + "px")
+                    .style("top", event.pageY + 10 + "px");
             })
-            .on("mousemove", function (event) {
-                // No need to update tooltip position on mousemove as it's fixed
-            })
+
             .on("mouseout", function () {
                 // Hide tooltip on mouseout
                 tooltip.classed("hidden", true);
@@ -162,13 +154,13 @@ const numberOfSteps = 5;
 
 // Create a linear scale
 const scale = d3.scaleLinear()
-    .domain([minNumber_Of_Commuters_who_bike, maxNumber_Of_Commuters_who_bike])
+    .domain([minNumberOfCommuters, maxNumberOfCommuters])
     .nice()
     .range([0, 100]);
 
 // Generate ticks
 const tickValues = d3.ticks(scale.domain()[0], scale.domain()[1], numberOfSteps);
-const legendText = tickValues.map(value => `${Math.round(value)}`);
+const legendText = tickValues.map(value => `${(value * 100).toFixed(1)}%`);
 
 // Create color legend labels for the first map
 legendText.forEach((text, index) => {
