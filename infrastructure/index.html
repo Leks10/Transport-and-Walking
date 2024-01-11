@@ -12,26 +12,56 @@
 
     <div class="navbar">
         <a href="../index.html">Home</a>
-        <a href="index.html">Map Page</a>
+        <a href="../community/index.html">Community</a>
+        <a href="../infrastructure/index.html">Infrastructure</a>
+        <a href="../safety/index.html">Safety</a>
         <a href="../our-team/index.html">Our Team</a>
     </div>
+    
     <h1 class="center">Map Dashboard</h1>
 
     <p> On this dashboard, we will have different maps so that a user can assess at a glance relevant information.
         For example, this map shows the number of bike trails available in each state. This shows a biker who is
         thinking of moving to a new state which might have the most bike-friendly infrastructure. In future iterations
         we will layer additional information relevant to a biker or other user. </p>
+    <div class="row-flex-container" > 
+        <div class="flex-item-left">
+            <div id="map"></div>
+            <div id="tooltip" class="hidden"></div>
+            <div id="color-legend"></div>
+        </div> 
+        <div class="flex-item-right">
+            <div class ="trailinfo">
+        <p>Rail trails are flat or gently sloping paths open to people but not cars. They follow the lines of old, abandoned railroad tracks, and often connect interesting towns and historical sites. These unique paths make great stand-alone cycling adventures or form the perfect start to a longer journey . </p>
 
-    <div id="map"></div>
-    <div id="tooltip" class="hidden"></div>
-    <div id="color-legend"></div>
+         <img class= "trail-image" src="../images/Bedford.jpg" alt="This is a picture of bikers on rail trail." width="450" height="300">
+         <p> <a href="https://bedforddepot.org/rail-trails/">Bedford Rail Trail</a></p>
+
+    </div>
+
+        </div>
+    </div>
+ 
 
     <div style="height: 200px;"></div>
-
-    <div id="map2"></div>
+<div class="row-flex-container" > 
+        <div class="flex-item-left">
+             <div id="map2"></div>
     <div id="tooltip2" class="hidden"></div>
 
     <div id="color-legend2"></div> <!-- Add a div for the color legend for the second map -->
+        </div> 
+        <div class="flex-item-right">
+            <div class ="trailinfo">
+        <p>Find Your Route: Here are ten amazing rail trail experiences in the United States that are part of Adventure Cycling Association's <a href="https://www.adventurecycling.org/routes-and-maps/adventure-cycling-route-network/">route network</a>.</p>
+
+         <img class= "trail-image" src="../images/vermont.jpg" alt="This is a picture of bikers on rail trail." width="450" height="300">
+         <p> <a href="https://railtrails.vermont.gov/trails/missisquoi-valley-rail-trail/image-gallery-missisquoi-valley-rail-trail/">Vermont Rail Trails</a></p>
+
+    </div>
+
+        </div>
+    </div>
 
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="https://d3js.org/topojson.v3.min.js"></script>
