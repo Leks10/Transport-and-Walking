@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <title>Demo Website</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" href="../style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../style.css">
 </head>
+
 <body>
 
     <div class="navbar">
@@ -17,4 +18,30 @@
         <a href="../our-team/index.html">Our Team</a>
     </div>
     
+    <h1 class="center">Looking for Safe Places to Bike?</h1>
+
+    <br>
+
+    <p> On this dashboard, we will have different maps to assess safety information related to protected bike lanes in each state. The color legend indicates the status of protected separated bike lanes in each state. </p>
+
+    <br>
+
+    <div class="row-flex-container"> 
+        <div class="flex-item-left">
+            <div id="safety-map"></div>
+            <div id="safety-tooltip" class="hidden"></div>
+            <div id="safety-color-legend"></div>
+        </div> 
+        <div class="flex-item-right">
+            <div class="trailinfo">
+                <p>Explore the safety of biking infrastructure in different states. The color legend provides information on the status of protected separated bike lanes.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://d3js.org/topojson.v3.min.js"></script>
+    <script src="safety-map.js"></script>
 </body>
+
+</html>
