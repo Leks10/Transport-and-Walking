@@ -191,6 +191,7 @@ a:hover {
     top: 220px; /* Adjust the top position */
     right: 20px; /* Adjust the right position */
 }
+
 .row-flex-container {
     display: flex;
     flex-wrap: wrap;
@@ -210,3 +211,20 @@ a:hover {
     height: 100%;
 }
 
+#tooltip2 {
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 10px;
+    z-index: 1;
+    font-size: 14px;
+    pointer-events: none; /* Ensure the tooltip does not block mouse events */
+}
+
+/* Styles for the second map's color legend */
+#safetyColorLegendContainer2 {
+    position: absolute;
+    bottom: 20px; /* Adjust the bottom position */
+    left: 50%; /* Center the legend horizontally */
+    transform: translateX(-50%);
+}
