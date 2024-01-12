@@ -77,14 +77,34 @@ d3.json("https://d3js.org/us-10m.v1.json").then(function (us) {
     // Convert TopoJSON to GeoJSON
     const geojson = topojson.feature(us, us.objects.states);
 
-    // Create map title
-    const mapTitle = svg.append("text")
-        .attr("x", width / 2)
-        .attr("y", 30)
-        .attr("text-anchor", "middle")
-        .style("font-size", "20px")
-        .style("font-weight", "bold")
-        .text("Percentage of Commuters who Bike to Work");
+// Create map heading
+const mapHeading = svg.append("text")
+    .attr("x", width / 2)
+    .attr("y", 30)
+    .attr("text-anchor", "middle")
+    .style("font-size", "24px")  // Adjust font size as needed
+    .style("font-weight", "bold")
+    .text("Where do People Bike to Work?");
+
+// Create map deck
+const mapDeck = svg.append("text")
+    .attr("x", width / 2)
+    .attr("y", 60)  // Adjust the vertical position as needed
+    .attr("text-anchor", "middle")
+    .style("font-size", "16px")  // Adjust font size as needed
+    .text("Percentage of commuters in each state who bike to work.");
+
+// Set the margin between the deck and the map
+const marginBetweenDeckAndMap = 20;
+
+// Set the width and height of the map container
+const mapWidth = 1000;
+const mapHeight = 600;
+
+// Adjust the y attribute of the map container to include the margin
+const mapContainer = svg.append("g")
+    .attr("transform", `translate(0, ${60 + marginBetweenDeckAndMap})`);  // Adjust the vertical position as needed
+
 
     // Use D3 to draw map paths and color them based on the normalized Number_of_Commuters_who_Bike value
     d3.csv("Bike_Commuter_Data.csv").then(function (csvData) {
@@ -97,7 +117,7 @@ d3.json("https://d3js.org/us-10m.v1.json").then(function (us) {
         });
 
 
-        // Find the maximum and minimum values of Number_of_Rail_Trails
+        // Find the maximum and minimum values of Number_of_Commuters_Who_Bike
         const maxNumberOfCommuters = d3.max(csvData, function (d) {
             return +d.Commuters_Who_Bike;
         });
@@ -106,40 +126,42 @@ d3.json("https://d3js.org/us-10m.v1.json").then(function (us) {
         });
 
 
-        // Draw map paths and color them based on the normalized Number_of_Commuters_who_bike value
-        svg.selectAll("path")
-            .data(geojson.features)
-            .enter().append("path")
-            .attr("d", d3.geoPath())
-            .style("fill", function (d) {
-                const stateName = fipsToStateName(d.id);
-                const NumberOfCommuters = CommutersData[stateName] || 0;
+// Draw map paths and color them based on the normalized Number_of_Commuters_who_bike value
+svg.selectAll("path")
+    .data(geojson.features)
+    .enter().append("path")
+    .attr("d", d3.geoPath())
+    .style("fill", function (d) {
+        const stateName = fipsToStateName(d.id);
+        const NumberOfCommuters = CommutersData[stateName] || 0;
 
-                // Normalize the value to be within the range [0, 1] using a square root scale
-                const normalizedValue = Math.sqrt(NumberOfCommuters / maxNumberOfCommuters);
+        // Normalize the value to be within the range [0, 1] using a square root scale
+        const normalizedValue = Math.sqrt(NumberOfCommuters / maxNumberOfCommuters);
 
-                // Use d3.interpolateReds for color interpolation
-                const colorScale = d3.scaleSequential(d3.interpolateReds);
-                const color = colorScale(normalizedValue);
+        // Use d3.interpolateReds for color interpolation
+        const colorScale = d3.scaleSequential(d3.interpolateReds);
+        const color = colorScale(normalizedValue);
 
-                // Apply the color to the map path
-                return color;
-            })
-            .on("mouseover", function (event, d) {
-                const stateName = fipsToStateName(d.id);
-                const NumberOfCommuters = CommutersData[stateName] || 0;
+        // Apply the color to the map path
+        return color;
+    })
+    .on("mouseover", function (event, d) {
+        const stateName = fipsToStateName(d.id);
+        const NumberOfCommuters = CommutersData[stateName] || 0;
 
-                // Calculate the percentage based on the maximum value
-                const percentage = (NumberOfCommuters / maxNumberOfCommuters) * 100;
+        // Calculate the percentage based on the maximum value
+        const percentage = (NumberOfCommuters)*100
 
-                // Update tooltip content with percentage
-                tooltip.html(`<strong>${stateName}</strong><br>Percent of Commuters who Bike to Work: ${Math.round(percentage)}%`);
+        // Update tooltip content with accurate percentage
+        tooltip.html(`<strong>${stateName}: ${percentage.toFixed(3)}%`);
 
-                // Show tooltip near the mouse position
-                tooltip.classed("hidden", false)
-                    .style("left", event.pageX + 10 + "px")
-                    .style("top", event.pageY + 10 + "px");
-            })
+        // Show tooltip near the mouse position
+        tooltip.classed("hidden", false)
+            .style("left", event.pageX + 10 + "px")
+            .style("top", event.pageY + 10 + "px");
+    })
+
+
 
             .on("mouseout", function () {
                 // Hide tooltip on mouseout
@@ -156,11 +178,12 @@ const numberOfSteps = 5;
 const scale = d3.scaleLinear()
     .domain([minNumberOfCommuters, maxNumberOfCommuters])
     .nice()
-    .range([0, 100]);
+    .range([0, 0.15]);
+
 
 // Generate ticks
 const tickValues = d3.ticks(scale.domain()[0], scale.domain()[1], numberOfSteps);
-const legendText = tickValues.map(value => `${(value * 100).toFixed(1)}%`);
+const legendText = tickValues.map(value => `${(value * 100).toFixed(3)}%`);
 
 // Create color legend labels for the first map
 legendText.forEach((text, index) => {
