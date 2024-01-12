@@ -92,6 +92,12 @@ a:hover {
     transform: translateX(-50%);
 }
 
+#safetyColorLegendContainer {
+    position: absolute;
+    bottom: 50px;
+    left: 20px;
+}
+
 #tooltip {
     position: absolute;
     background-color: #fff;
@@ -170,6 +176,7 @@ a:hover {
     display: flex;
     flex-wrap: wrap;
 }
+
 
 .flex-item-left {
    flex: 65%;
