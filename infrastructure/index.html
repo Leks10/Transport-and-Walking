@@ -18,12 +18,9 @@
         <a href="../our-team/index.html">Our Team</a>
     </div>
     
-    <h1 class="center">Map Dashboard</h1>
+    <h1 class="center">Explore American's Adventurous Rail Trails!</h1>
 
-    <p> On this dashboard, we will have different maps so that a user can assess at a glance relevant information.
-        For example, this map shows the number of bike trails available in each state. This shows a biker who is
-        thinking of moving to a new state which might have the most bike-friendly infrastructure. In future iterations
-        we will layer additional information relevant to a biker or other user. </p>
+    <p>Get good insight into American's rail trail facts such the number of rail trails available and miles in each state. This dashboard provides information about the most bike-friendly infrastructures in the United States</p>
     <div class="row-flex-container" > 
         <div class="flex-item-left">
             <div id="map"></div>
@@ -32,19 +29,34 @@
         </div> 
         <div class="flex-item-right">
             <div class ="trailinfo">
-        <p>Rail trails are flat or gently sloping paths open to people but not cars. They follow the lines of old, abandoned railroad tracks, and often connect interesting towns and historical sites. These unique paths make great stand-alone cycling adventures or form the perfect start to a longer journey . </p>
+        <p>Rail trails are flat or gently sloping paths open to people but not cars. They follow the lines of old, abandoned railroad tracks, and often connect interesting towns and historical sites.</p>
+    <div class="main-info">  
+        <div class="left-info">
+            <p> <a href="https://wilderness-voyageurs.com/bike-tours-on-the-great-american-rail-trail/"><b>Rail Rail Bike Tours</b></a></p>
+        </div>
 
+        <div class="right-info">
+            <p> <a href="https://us.trip.com/hot/hotels-near-rail-trail/"><b>Hotels</b></a></p>
+        </div>
+    </div>  
          <img class= "trail-image" src="../images/Bedford.jpg" alt="This is a picture of bikers on rail trail." width="450" height="300">
          <p> <a href="https://bedforddepot.org/rail-trails/">Bedford Rail Trail</a></p>
-
-    </div>
-
-        </div>
+    
     </div>
  
+        </div>
 
-    <div style="height: 200px;"></div>
-<div class="row-flex-container" > 
+    </div>
+  <!--
+      <div style=" margin-top: 80px;">
+           <div>
+                <p>Source: Rails-to-Trails Conservancy and the Adventure Cycling Association.</p>
+           </div>
+      </div> -->
+
+    <div style="height: 100px;"></div>
+
+    <div class="row-flex-container" > 
         <div class="flex-item-left">
              <div id="map2"></div>
     <div id="tooltip2" class="hidden"></div>
@@ -53,7 +65,7 @@
         </div> 
         <div class="flex-item-right">
             <div class ="trailinfo">
-        <p>Find Your Route: Here are ten amazing rail trail experiences in the United States that are part of Adventure Cycling Association's <a href="https://www.adventurecycling.org/routes-and-maps/adventure-cycling-route-network/">route network</a>.</p>
+        <p> <b>Find Your Route:</b> Here are ten amazing rail trail experiences in the United States that are part of Adventure Cycling Association's <a href="https://www.adventurecycling.org/routes-and-maps/adventure-cycling-route-network/">route network</a>.</p>
 
          <img class= "trail-image" src="../images/vermont.jpg" alt="This is a picture of bikers on rail trail." width="450" height="300">
          <p> <a href="https://railtrails.vermont.gov/trails/missisquoi-valley-rail-trail/image-gallery-missisquoi-valley-rail-trail/">Vermont Rail Trails</a></p>
@@ -63,10 +75,44 @@
         </div>
     </div>
 
+   <!--  <div>
+           <div>
+                <p>Source: Rails-to-Trails Conservancy and the Adventure Cycling Association.</p>
+           </div>
+    </div> -->
+   <div style="height: 100px;"></div>
+
+    <!-- Third Map -->
+   <div class="row-flex-container" > 
+        <div class="flex-item-left">
+            <div id="map3"></div>
+            <div id="tooltip3" class="hidden"></div>
+            <div id="color-legend3"></div>
+        </div> 
+        <div class="flex-item-right">
+            <div class ="trailinfo">
+        <p>Imagine yourself pedaling across the entire country on a safe and scenic pathway on local trail that connects along historic routes.The Great American Rail-Trail is the nation’s first cross-country multiuse trail, stretching more than 3,700 miles between Washington, D.C., and Washington State. This is an iconic American infrastructure that will connect thousands of miles of rail-trails. </p>
+
+         <img class= "trail-image" src="../images/great_america.jpg" alt="This is a picture of bikers on rail trail." width="450" height="300">
+         <p> <a href="https://www.railstotrails.org/greatamericanrailtrail/?fbclid=IwAR3lmHZUV4priWRyDJTsukUtD7riiVnEwM0y79v6rEtLqeOiHn-JuMi8bCQ/"><b>Great American Rails Trails: Get Involved</b></a></p>
+
+    </div>
+
+        </div>
+    </div>
+
+    <div>
+           <div>
+                <p>Source: Rails-to-Trails Conservancy and the Adventure Cycling Association.</p>
+           </div>
+    </div>
+
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="https://d3js.org/topojson.v3.min.js"></script>
     <script src="main.js"></script>
     <script src="map2.js"></script>
+    <script src="map3.js"></script>
+
 </body>
 
 </html>

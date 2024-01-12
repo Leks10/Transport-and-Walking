@@ -84,7 +84,7 @@ d3.json("https://d3js.org/us-10m.v1.json").then(function (us) {
         .attr("text-anchor", "middle")
         .style("font-size", "20px")
         .style("font-weight", "bold")
-        .text("Number of Trails in Each U.S. State");
+        .text("Number of Rail Trails in Each U.S. State");
 
     // Use D3 to draw map paths and color them based on the normalized Number_of_Rail_Trails value
     d3.csv("data/map_data.csv").then(function (csvData) {
