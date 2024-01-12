@@ -1,51 +1,51 @@
-﻿State,Number_of_Rail_Trails
-Alabama,26
-Alaska,5
-Arizona,13
-Arkansas,22
-California,132
-Colorado,43
-Connecticut,28
-Delaware,12
-Florida,59
-Georgia,31
-Hawaii,4
-Idaho,23
-Illinois,83
-Indiana,74
-Iowa,96
-Kansas,24
-Kentucky,18
-Louisiana,7
-Maine,34
-Maryland,38
-Massachusetts,73
-Michigan,132
-Minnesota,83
-Mississippi,17
-Missouri,24
-Montana,21
-Nebraska,26
-Nevada,6
-New Hampshire,76
-New Jersey,54
-New Mexico,9
-New York,118
-North Carolina,32
-North Dakota,5
-Ohio,110
-Oklahoma,11
-Oregon,24
-Pennsylvania,194
-Rhode Island,10
-South Carolina,28
-South Dakota,11
-Tennessee,34
-Texas,38
-Utah,18
-Vermont,18
-Virginia,49
-Washington,85
-West Virginia,68
-Wisconsin,101
-Wyoming,5
+﻿State,Number_of_Rail_Trails,Miles_of_Potential_Rail_Trails
+Alabama,26,174
+Alaska,5,247
+Arizona,13,13
+Arkansas,22,240
+California,132,801
+Colorado,43,140
+Connecticut,28,89
+Delaware,12,10
+Florida,59,440
+Georgia,31,95
+Hawaii,4,60
+Idaho,23,69
+Illinois,83,213
+Indiana,74,337
+Iowa,96,249
+Kansas,24,158
+Kentucky,18,201
+Louisiana,7,23
+Maine,34,82
+Maryland,38,192
+Massachusetts,73,332
+Michigan,132,217
+Minnesota,83,184
+Mississippi,17,27
+Missouri,24,409
+Montana,21,126
+Nebraska,26,124
+Nevada,6,2
+New Hampshire,76,280
+New Jersey,54,150
+New Mexico,9,47
+New York,118,712
+North Carolina,32,161
+North Dakota,5,0
+Ohio,110,288
+Oklahoma,11,6
+Oregon,24,182
+Pennsylvania,194,706
+Rhode Island,10,49
+South Carolina,28,56
+South Dakota,11,100
+Tennessee,34,85
+Texas,38,185
+Utah,18,2
+Vermont,18,81
+Virginia,49,132
+Washington,85,246
+West Virginia,68,148
+Wisconsin,101,194
+Wyoming,5,19
