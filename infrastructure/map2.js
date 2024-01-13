@@ -87,22 +87,22 @@ d3.json("https://d3js.org/us-10m.v1.json").then(function (us) {
         .text("Miles of Rail Trails in Each U.S. State");
 
     // Use D3 to draw map paths and color them based on the normalized Miles_of_Rail_Trails value
-    d3.csv("data/map2.csv").then(function (csvData) {
+    d3.csv("data/map_data.csv").then(function (csvData) {
         // Convert CSV data to an object with state names as keys
         const railTrailsData = {};
         csvData.forEach(function (d) {
             const stateName = d.State;
-            const milesOfRailTrails = +d['Miles of Rail Trails'];
+            const milesOfRailTrails = +d['Miles_of_Rail_Trails'];
             railTrailsData[stateName] = milesOfRailTrails;
         });
 
         // Find the maximum and minimum values of Miles_of_Rail_Trails
         const maxMilesOfRailTrails = d3.max(csvData, function (d) {
-            return +d['Miles of Rail Trails'];
+            return +d['Miles_of_Rail_Trails'];
         });
 
         const minMilesOfRailTrails = d3.min(csvData, function (d) {
-            return +d['Miles of Rail Trails'];
+            return +d['Miles_of_Rail_Trails'];
         });
 
  // Use D3 to draw map paths and color them based on the normalized Miles_of_Rail_Trails value
