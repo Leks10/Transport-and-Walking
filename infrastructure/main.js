@@ -129,67 +129,61 @@ d3.json("https://d3js.org/us-10m.v1.json").then(function (us) {
                 const numberOfRailTrails = railTrailsData[stateName] || 0;
 
                 // Update tooltip content
-                tooltip.html(`<strong>${stateName}</strong><br>Number of Trails: ${numberOfRailTrails}`);
+                tooltip.html(`<strong>${stateName}:${numberOfRailTrails}`);
 
-                // Show tooltip in a fixed position to the right of the map
-                const tooltipLeft = width + 10; // Adjust the left position
-                const tooltipTop = event.pageY - tooltip2.node().offsetHeight / 2; // Center tooltip vertically
-
+                // Show tooltip near the mouse position
                 tooltip.classed("hidden", false)
-                    .style("left", tooltipLeft + "px")
-                    .style("top", tooltipTop + "px");
-            })
-            .on("mousemove", function (event) {
-                // No need to update tooltip position on mousemove as it's fixed
-            })
+                    .style("left", event.pageX + 10 + "px")
+                    .style("top", event.pageY + 10 + "px");
+                })
             .on("mouseout", function () {
                 // Hide tooltip on mouseout
                 tooltip.classed("hidden", true);
             });
 
-// Add color legend for the first map
-const colorLegendContainer = d3.select("#color-legend");
+        // Add color legend for the first map
+        const colorLegendContainer = d3.select("#color-legend");
 
-// After finding the actual max and min values, dynamically generate labels
-const numberOfSteps = 5;
+        // After finding the actual max and min values, dynamically generate labels
+        const numberOfSteps = 5;
 
-// Create a linear scale
-const scale = d3.scaleLinear()
-    .domain([minNumberOfRailTrails, maxNumberOfRailTrails])
-    .nice()
-    .range([0, 100]);
+        // Create a linear scale
+        const scale = d3.scaleLinear()
+            .domain([minNumberOfRailTrails, maxNumberOfRailTrails])
+            .nice()
+            .range([0, 100]);
 
-// Generate ticks
-const tickValues = d3.ticks(scale.domain()[0], scale.domain()[1], numberOfSteps);
-const legendText = tickValues.map(value => `${Math.round(value)}`);
+        // Generate ticks
+        const tickValues = d3.ticks(scale.domain()[0], scale.domain()[1], numberOfSteps);
+        const legendText = tickValues.map(value => `${Math.round(value)}`);
 
-// Create color legend labels for the first map
-legendText.forEach((text, index) => {
-    colorLegendContainer.append("div")
-        .text(text)
-        .style("color", "#333")
-        .style("display", "inline-block")
-        .style("margin", "0 10px");
-});
+        // Create color legend labels for the first map
+        legendText.forEach((text, index) => {
+            colorLegendContainer.append("div")
+                .text(text)
+                .style("color", "#333")
+                .style("display", "inline-block")
+                .style("margin", "0 10px");
+        });
 
-// Create color legend color boxes for the first map
-const colorScale = d3.scaleSequential(d3.interpolateRgbBasis(["#fee0d2", "#fc9272", "#d73027", "#67000d"]));
+        // Create color legend color boxes for the first map
+        const colorScale = d3.scaleSequential(d3.interpolateRgbBasis(["#fee0d2", "#fc9272", "#d73027", "#67000d"]));
 
-colorLegendContainer.selectAll("div.color-box")
-    .data(d3.range(0, 1.01, 0.2))
-    .enter().append("div")
-    .attr("class", "color-box")
-    .style("background-color", d => colorScale(d))
-    .style("width", "30px")
-    .style("height", "20px")
-    .style("display", "inline-block");
+        colorLegendContainer.selectAll("div.color-box")
+            .data(d3.range(0, 1.01, 0.2))
+            .enter().append("div")
+            .attr("class", "color-box")
+            .style("background-color", d => colorScale(d))
+            .style("width", "30px")
+            .style("height", "20px")
+            .style("display", "inline-block");
 
-const legendHeight = 30; // Adjust the height of the legend as needed
-const legendTop = height + 250; // Adjust the top position as needed
-const legendLeft = 200; // Adjust the left position as needed
+        const legendHeight = 30; // Adjust the height of the legend as needed
+        const legendTop = height + 320; // Adjust the top position as needed
+        const legendLeft = 200; // Adjust the left position as needed
 
-colorLegendContainer.style("position", "absolute")
-    .style("left", legendLeft + "px")
-    .style("top", legendTop + "px");
+        colorLegendContainer.style("position", "absolute")
+            .style("left", legendLeft + "px")
+            .style("top", legendTop + "px");
     });
 });
