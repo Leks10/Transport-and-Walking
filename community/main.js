@@ -95,10 +95,10 @@ const mapDeck = svg.append("text")
     .text("Percentage of commuters in each state who bike to work.");
 
 // Set the margin between the deck and the map
-const marginBetweenDeckAndMap = 20;
+const marginBetweenDeckAndMap = 100;
 
 // Set the width and height of the map container
-const mapWidth = 1000;
+const mapWidth = 600;
 const mapHeight = 600;
 
 // Adjust the y attribute of the map container to include the margin

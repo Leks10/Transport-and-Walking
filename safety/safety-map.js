@@ -107,10 +107,10 @@ d3.json("https://d3js.org/us-10m.v1.json").then(function (us) {
 
                 // Define colors based on bike lane status
                 const colorMap = {
-                    'Multiple Locations': '#AAD9BB',
-                    'One Location': '#80BCBD',
-                    'None': '#F9F7C9',
-                    'Not reported': '#E5E1DA',
+                    'Multiple Locations': '#3182bd',
+                    'One Location': '#6baed6',
+                    'None': '#c6dbef',
+                    'Not reported': '#deebf7',
                 };
 
 
@@ -145,7 +145,7 @@ d3.json("https://d3js.org/us-10m.v1.json").then(function (us) {
 
         // Define color legend labels and colors
         const legendLabels = ['Multiple Locations', 'One Location', 'None', 'Not reported'];
-        const legendColors = ['#AAD9BB', '#80BCBD', '#F9F7C9', '#E5E1DA'];
+        const legendColors = ['#3182bd', '#6baed6', '#c6dbef', '#deebf7'];
 
         // Create color legend labels for the safety map
         legendLabels.forEach((label, index) => {
@@ -166,8 +166,8 @@ d3.json("https://d3js.org/us-10m.v1.json").then(function (us) {
         });
 
         // Set legend position
-        const legendTop = safetyHeight + 220; // Adjust the top position
-        const legendLeft = safetyWidth / 2 - (legendLabels.length * 95); // Adjust the left position
+        const legendTop = safetyHeight + 270; // Adjust the top position
+        const legendLeft = safetyWidth / 2.4 - (legendLabels.length * 95); // Adjust the left position
 
         safetyColorLegendContainer.style("position", "absolute")
             .style("left", legendLeft + "px")
