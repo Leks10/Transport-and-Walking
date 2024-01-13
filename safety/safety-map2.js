@@ -141,8 +141,8 @@ d3.json("https://d3js.org/us-10m.v1.json").then(function (us) {
 
 
         // Create color legend labels for the safety map
-        const legendLabels2 = ['Low', 'High'];
-        const legendColors2 = ['#FFEDA0', '#800026'];
+        const legendLabels2 = ['0', '5', '10', '30', '50', '100'];
+        const legendColors2 = ['#fee0d2', '#fcbba1', '#fc9272', '#fb6a4a', '#de2d26', '#a50f15'];
 
         // Create color legend labels for the safety map
         legendLabels2.forEach((label, index) => {
@@ -163,10 +163,11 @@ d3.json("https://d3js.org/us-10m.v1.json").then(function (us) {
         });
 
         // Set legend position
-        const legendLeft2 = safetyWidth2 / 2 - (legendLabels2.length * 20);
+        const legendTop2 = safetyHeight2 + 200; // 
+        const legendLeft2 = safetyWidth2 / 6 - (legendLabels2.length * 20);
 
         safetyColorLegendContainer2.style("position", "absolute")
             .style("left", legendLeft2 + "px")
-            .style("bottom", "10px"); // Adjust the bottom position
+            .style("bottom", "-900px"); // Adjust the bottom position
  });
 });
