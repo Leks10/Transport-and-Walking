@@ -84,7 +84,7 @@ d3.json("https://d3js.org/us-10m.v1.json").then(function (us) {
         .attr("text-anchor", "middle")
         .style("font-size", "20px")
         .style("font-weight", "bold")
-        .text("Protected Separated Bike Lanes Status in Each U.S. State");
+        .text("Protected Bike Lanes Status by States");
 
     // Use D3 to draw map paths and color them based on the Protected_Separated_Bike_Lanes status
     d3.csv("data/protected_bike_lanes.csv").then(function (csvData) {
