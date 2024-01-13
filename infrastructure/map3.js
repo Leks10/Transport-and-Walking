@@ -1,5 +1,6 @@
-// Function to convert FIPS code to state name for the second map
+// Function to convert FIPS code to state name for the third map
 function fipsToStateName(fipsCode) {
+    // Mapping FIPS codes to corresponding state names
     const fipsToState = {
         '01': 'Alabama',
         '02': 'Alaska',
@@ -85,7 +86,6 @@ d3.json("https://d3js.org/us-10m.v1.json").then(function (us) {
         .style("font-size", "20px")
         .style("font-weight", "bold")
         .text("Miles of Potential Rail Trails in Each U.S. State");
-        
 
     // Use D3 to draw map paths and color them based on the normalized Miles_of_Rail_Trails value
     d3.csv("data/map_data.csv").then(function (csvData) {
@@ -106,55 +106,41 @@ d3.json("https://d3js.org/us-10m.v1.json").then(function (us) {
             return +d['Miles_of_Potential_Rail_Trails'];
         });
 
- // Use D3 to draw map paths and color them based on the normalized Miles_of_Rail_Trails value
-svg3.selectAll("path")
-    .data(geojson.features)
-    .enter().append("path")
-    .attr("d", d3.geoPath())
-    .style("fill", function (d) {
-        const stateName = fipsToStateName(d.id);
-        const milesOfPotentialRailTrails = railTrailsData[stateName] || 0;
+        // Use D3 to draw map paths and color them based on the normalized Miles_of_Rail_Trails value
+        svg3.selectAll("path")
+            .data(geojson.features)
+            .enter().append("path")
+            .attr("d", d3.geoPath())
+            .style("fill", function (d) {
+                const stateName = fipsToStateName(d.id);
+                const milesOfPotentialRailTrails = railTrailsData[stateName] || 0;
 
-        // Normalize the value to be within the range [0, 1] using a square root scale
-        const normalizedValue = Math.sqrt(milesOfPotentialRailTrails / maxMilesOfPotentialRailTrails);
+                // Normalize the value to be within the range [0, 1] using a square root scale
+                const normalizedValue = Math.sqrt(milesOfPotentialRailTrails / maxMilesOfPotentialRailTrails);
 
-        // Use d3.interpolateBlues for color interpolation
-        const colorScale = d3.scaleSequential(d3.interpolateGreens);
-        const color = colorScale(normalizedValue);
+                // Use d3.interpolateGreens for color interpolation
+                const colorScale = d3.scaleSequential(d3.interpolateGreens);
+                const color = colorScale(normalizedValue);
 
-        // Apply the color to the map path
-        return color;
-    })
-    .on("mouseover", handleMouseOver)
-    .on("mousemove", handleMouseMove)
-    .on("mouseout", handleMouseOut);
+                // Apply the color to the map path
+                return color;
+            })
+            .on("mouseover", function (event, d) {
+                const stateName = fipsToStateName(d.id);
+                const milesOfPotentialRailTrails = railTrailsData[stateName] || 0;
 
-// Event handlers for the third map's tooltips
-function handleMouseOver(event, d) {
-    const stateName = fipsToStateName(d.id);
-    const milesOfPotentialRailTrails = railTrailsData[stateName] || 0;
+                // Update tooltip content
+                tooltip.html(`<strong>${stateName}:${milesOfPotentialRailTrails}`);
 
-    // Update tooltip content for the third map
-    tooltip3.html(`<strong>${stateName}</strong><br>Miles of Potential Rail Trails: ${milesOfPotentialRailTrails}`);
-
-    // Show tooltip to the right of the second map
-    const tooltipLeft = width3 + 10; // Adjust the left position
-    const tooltipTop = event.pageY - tooltip3.node().offsetHeight / 2; // Center tooltip vertically
-
-    tooltip3.classed("hidden", false)
-        .style("left", tooltipLeft + "px")
-        .style("top", tooltipTop + "px");
-}
-
-function handleMouseMove(event) {
-    // No need to update tooltip position on mousemove as it's fixed
-}
-
-function handleMouseOut() {
-    // Hide tooltip for the third map on mouseout
-    tooltip3.classed("hidden", true);
-}
-
+                // Show tooltip near the mouse position
+                tooltip.classed("hidden", false)
+                    .style("left", event.pageX + 10 + "px")
+                    .style("top", event.pageY + 10 + "px");
+                })
+            .on("mouseout", function () {
+                // Hide tooltip on mouseout
+                tooltip.classed("hidden", true);
+            });
 
 
         // Add color legend for the third map
