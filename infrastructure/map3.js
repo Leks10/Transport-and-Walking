@@ -56,17 +56,17 @@ function fipsToStateName(fipsCode) {
     return fipsToState[fipsCode] || 'Unknown';
 }
 
-// Set the width and height of the second map container
+// Set the width and height of the third map container
 const width3 = 1000;
 const height3 = 600;
 
-// Create the second map container
+// Create the third map container
 const svg3 = d3.select("#map3")
     .append("svg")
     .attr("width", width3)
     .attr("height", height3);
 
-// Create tooltip element for the second map
+// Create tooltip element for the third map
 const tooltip3 = d3.select("body").append("div")
     .attr("id", "tooltip3")
     .attr("class", "hidden")
@@ -88,22 +88,22 @@ d3.json("https://d3js.org/us-10m.v1.json").then(function (us) {
         
 
     // Use D3 to draw map paths and color them based on the normalized Miles_of_Rail_Trails value
-    d3.csv("data/map_data3.csv").then(function (csvData) {
+    d3.csv("data/map_data.csv").then(function (csvData) {
         // Convert CSV data to an object with state names as keys
         const railTrailsData = {};
         csvData.forEach(function (d) {
             const stateName = d.State;
-            const milesOfPotentialRailTrails = +d['Miles of Potential Rail Trails'];
+            const milesOfPotentialRailTrails = +d['Miles_of_Potential_Rail_Trails'];
             railTrailsData[stateName] = milesOfPotentialRailTrails;
         });
 
         // Find the maximum and minimum values of Miles_of_Rail_Trails
         const maxMilesOfPotentialRailTrails = d3.max(csvData, function (d) {
-            return +d['Miles of Potential Rail Trails'];
+            return +d['Miles_of_Potential_Rail_Trails'];
         });
 
         const minMilesOfPotentialRailTrails = d3.min(csvData, function (d) {
-            return +d['Miles of Potential Rail Trails'];
+            return +d['Miles_of_Potential_Rail_Trails'];
         });
 
  // Use D3 to draw map paths and color them based on the normalized Miles_of_Rail_Trails value
@@ -129,12 +129,12 @@ svg3.selectAll("path")
     .on("mousemove", handleMouseMove)
     .on("mouseout", handleMouseOut);
 
-// Event handlers for the second map's tooltips
+// Event handlers for the third map's tooltips
 function handleMouseOver(event, d) {
     const stateName = fipsToStateName(d.id);
     const milesOfPotentialRailTrails = railTrailsData[stateName] || 0;
 
-    // Update tooltip content for the second map
+    // Update tooltip content for the third map
     tooltip3.html(`<strong>${stateName}</strong><br>Miles of Potential Rail Trails: ${milesOfPotentialRailTrails}`);
 
     // Show tooltip to the right of the second map
@@ -151,13 +151,13 @@ function handleMouseMove(event) {
 }
 
 function handleMouseOut() {
-    // Hide tooltip for the second map on mouseout
+    // Hide tooltip for the third map on mouseout
     tooltip3.classed("hidden", true);
 }
 
 
 
-        // Add color legend for the second map
+        // Add color legend for the third map
         const colorLegendContainer3 = d3.select("#color-legend3");
 
         // After finding the actual max and min values, dynamically generate labels
@@ -173,7 +173,7 @@ function handleMouseOut() {
         const tickValues = d3.ticks(scale.domain()[0], scale.domain()[1], numberOfSteps);
         const legendText = tickValues.map(value => `${Math.round(value)}`);
 
-        // Create color legend labels for the second map
+        // Create color legend labels for the third map
         legendText.forEach((text, index) => {
             colorLegendContainer3.append("div")
                 .text(text)
@@ -182,7 +182,7 @@ function handleMouseOut() {
                 .style("margin", "0 10px");
         });
 
-        // Create color legend color boxes for the second map
+        // Create color legend color boxes for the third map
         const colorScale = d3.scaleSequential(d3.interpolateGreens);
 
         colorLegendContainer3.selectAll("div.color-box")
