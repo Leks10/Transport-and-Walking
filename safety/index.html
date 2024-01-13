@@ -6,6 +6,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../style.css">
+    <style>
+        /* Add these styles to position charts side by side */
+        .chart-container-left,
+        .chart-container-right {
+            width: 50%;
+            box-sizing: border-box;
+        }
+
+        .chart-container-left {
+            padding-right: 10px; /* Adjust as needed */
+        }
+
+        .chart-container-right {
+            padding-left: 10px; /* Adjust as needed */
+        }
+    </style>
 </head>
 
 <body>
@@ -47,10 +63,10 @@
         <div class="flex-item-left">
             <div id="safety-map2"></div>
             <div id="safety-tooltip2" class="hidden"></div>
-             <div id="safety-color-legend2"></div>
-             <div class="data-source"> 
-            Number based upon a 5-year average from 2017-2021<br>
-            Source: <a href="https://cdan.dot.gov/query">NHTSA Fatality Analysis Reporting System</a></div> 
+            <div id="safety-color-legend2"></div>
+            <div class="data-source"> 
+                Number based upon a 5-year average from 2017-2021<br>
+                Source: <a href="https://cdan.dot.gov/query">NHTSA Fatality Analysis Reporting System</a></div> 
         </div>
         <div class="flex-item-right">
             <div class="trailinfo">
@@ -60,10 +76,48 @@
         </div>
     </div>
 
+    <br><br><br><br>
+
+    <!-- Chart 1 -->
+    <div class="row-flex-container">
+        <div class="flex-item-left chart-container-left"> <!-- Add chart-container-left class -->
+            <div id="safety-chart1"></div>
+            <div class="data-source"> 
+                Bicyclist Fatality Rate = Average Bicyclist Fatality (2017-2021) / population x 1000,000 <br>
+                Source: <a href="https://cdan.dot.gov/query">NHTSA Fatality Analysis Reporting System</a>
+            </div> 
+        </div>
+        <div class="flex-item-right">
+            <div class="trailinfo">
+                <!-- Content for the first chart -->
+            </div>
+        </div>
+    </div>
+
+    <br><br><br><br>
+    
+    <!-- Chart 2 -->
+    <div class="row-flex-container">
+        <div class="flex-item-left chart-container-right"> <!-- Add chart-container-right class -->
+            <div id="safety-chart2"></div>
+            <div class="data-source"> 
+                Bicyclist Fatality Rate = Average Bicyclist Fatality (2017-2021) / population x 1000,000 <br>
+                Source: <a href="https://cdan.dot.gov/query">NHTSA Fatality Analysis Reporting System</a>
+            </div> 
+        </div>
+        <div class="flex-item-right">
+            <div class="trailinfo">
+                <!-- Content for the second chart -->
+            </div>
+        </div>
+    </div>
+
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="https://d3js.org/topojson.v3.min.js"></script>
     <script src="safety-map.js"></script>
     <script src="safety-map2.js"></script>
+    <script src="safety-chart1.js"></script>
+    <script src="safety-chart2.js"></script>
 </body>
 
 </html>
