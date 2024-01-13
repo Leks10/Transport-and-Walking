@@ -295,3 +295,10 @@ a:hover {
     left: 50%; /* Center the legend horizontally */
     transform: translateX(-50%);
 }
+
+.data-source {
+    text-align: left;
+    margin-top: 50px; /* Adjust the margin as needed */
+    margin-left: 45px; /* Adjust the left margin as needed */
+    color: #777; /* Set the color for the text */
+}
