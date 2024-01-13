@@ -1,5 +1,4 @@
 /* Common styles for both main page and map page */
-
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f4f4f4;
@@ -19,12 +18,12 @@ h1 {
     margin: 0;
     padding: 25px 0;
 }
+
 h2 {
     color: #64a0f7;
     margin: 0;
     padding: 15px 0;
 }
-
 
 img {
     display: block;
@@ -32,7 +31,7 @@ img {
 }
 
 p {
-    text-align: left; 
+    text-align: left;
     line-height: 1.6;
 }
 
@@ -88,13 +87,13 @@ a:hover {
 /* Styles specific to the map page */
 /*
 #map {
-    width: 800px; 
+    width: 800px;
     height: 600px;
 }
 */
 #color-legend {
     position: absolute;
-    bottom: 30px; 
+    bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
 }
@@ -140,8 +139,6 @@ a:hover {
     display: none;
 }
 
-
-
 /* tiles */
 .tiles {
     display: flex;
@@ -175,31 +172,30 @@ a:hover {
 
 /* team member */
 .team-container {
-            max-width: 1000px;
-            margin: 20px auto;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-        }
+    max-width: 1000px;
+    margin: 20px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
 
 .team-member {
-            width: 45%;
-            margin: 20px;
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
+    width: 45%;
+    margin: 20px;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
 
 .team-member img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 10px;
-        }
-
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
 
 .trailinfo {
     max-width: 500px; /* Adjust the maximum width of the container */
@@ -221,15 +217,16 @@ a:hover {
     flex: 1;
     padding: 20px; /* Add padding as needed */
 }
+
 .row-flex-container {
     display: flex;
     flex-wrap: nowrap;
 }
 
-
 .flex-item-left {
-   flex: 65%;
+    flex: 65%;
 }
+
 .flex-item-right {
     flex: 35%;
 }
@@ -241,16 +238,13 @@ a:hover {
 }
 
 .community-image {
-
     object-fit: cover;
     align-content: center;
     width: 100%;
     height: 100%;
 }
 
-.commuter-image
-{
-
+.commuter-image {
     object-fit: cover;
     width: 100%;
     height: 100%;
@@ -301,4 +295,23 @@ a:hover {
     margin-top: 50px; /* Adjust the margin as needed */
     margin-left: 45px; /* Adjust the left margin as needed */
     color: #777; /* Set the color for the text */
+}
+
+/* Adjust the width for the charts */
+#safety-chart1,
+#safety-chart2 {
+    box-sizing: border-box;
+    width: 45%; /* Set the width of each chart */
+    float: left; /* Float the charts to make them side by side */
+}
+
+/* Ensure the last chart clears the float */
+#safety-chart2 {
+    clear: right; /* Clear the float to move to the next row */
+}
+
+/* Additional styling for the charts */
+#safety-chart1 svg,
+#safety-chart2 svg {
+    width: 100%; /* Set the width of the chart within its container */
 }
