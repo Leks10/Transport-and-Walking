@@ -84,7 +84,7 @@ d3.json("https://d3js.org/us-10m.v1.json").then(function (us) {
         .attr("text-anchor", "middle")
         .style("font-size", "20px")
         .style("font-weight", "bold")
-        .text("Protected Bike Lanes Status by States");
+        .text("Protected Bike Lanes Status in Each U.S. State");
 
     // Use D3 to draw map paths and color them based on the Protected_Separated_Bike_Lanes status
     d3.csv("data/protected_bike_lanes.csv").then(function (csvData) {
@@ -113,7 +113,6 @@ d3.json("https://d3js.org/us-10m.v1.json").then(function (us) {
                     'Not reported': '#deebf7',
                 };
 
-
                 // Apply the color to the map path
                 return colorMap[bikeLaneStatus];
             })
@@ -124,21 +123,16 @@ d3.json("https://d3js.org/us-10m.v1.json").then(function (us) {
                 // Update tooltip content
                 safetyTooltip.html(`<strong>${stateName}</strong><br>Status: ${bikeLaneStatus}`);
 
-                // Show tooltip in a fixed position to the right of the map
-                const tooltipLeft = safetyWidth + 10; // Adjust the left position
-                const tooltipTop = event.pageY - safetyTooltip.node().offsetHeight / 2; // Center tooltip vertically
-
+                // Show tooltip near the mouse position
                 safetyTooltip.classed("hidden", false)
-                    .style("left", tooltipLeft + "px")
-                    .style("top", tooltipTop + "px");
-            })
-            .on("mousemove", function (event) {
-                // No need to update tooltip position on mousemove as it's fixed
-            })
+                    .style("left", event.pageX + 10 + "px")
+                    .style("top", event.pageY + 10 + "px");
+                })
             .on("mouseout", function () {
                 // Hide tooltip on mouseout
                 safetyTooltip.classed("hidden", true);
             });
+
 
         // Add color legend for the safety map
         const safetyColorLegendContainer = d3.select("#safety-color-legend"); // <-- Corrected ID
@@ -166,8 +160,9 @@ d3.json("https://d3js.org/us-10m.v1.json").then(function (us) {
         });
 
         // Set legend position
-        const legendTop = safetyHeight + 270; // Adjust the top position
-        const legendLeft = safetyWidth / 2.4 - (legendLabels.length * 95); // Adjust the left position
+        const legendHeight = 30; 
+        const legendTop = height + 320; 
+        const legendLeft = 200; 
 
         safetyColorLegendContainer.style("position", "absolute")
             .style("left", legendLeft + "px")

@@ -6,26 +6,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../style.css">
-    <style>
-        /* Add these styles to position charts side by side */
-        .chart-container-left,
-        .chart-container-right {
-            width: 50%;
-            box-sizing: border-box;
-        }
-
-        .chart-container-left {
-            padding-right: 10px; /* Adjust as needed */
-        }
-
-        .chart-container-right {
-            padding-left: 10px; /* Adjust as needed */
-        }
-    </style>
 </head>
 
 <body>
 
+    <!-- Navigation Bar -->
     <div class="navbar">
         <a href="../index.html">Home</a>
         <a href="../community/index.html">Community</a>
@@ -34,90 +19,83 @@
         <a href="../our-team/index.html">Our Team</a>
     </div>
 
+    <!-- Page Heading -->
     <h1 class="center">Looking for Safe Places to Bike?</h1>
 
-    <br>
+    <!-- Introduction -->
+    <div class="container">
+        <p> Explore safety insights across states using our interactive maps that showcase information on protected bike lanes and bicyclist fatalities. The color legends provide a visual representation of the status of protected separated bike lanes and the number of bicyclist fatalities in each state. </p>
+    </div>
 
-    <p> Explore safety insights across states with our interactive maps showcasing information on protected bike lanes and bicyclist fatalities. The color legends provide a visual representation of the status of protected separated bike lanes and the number of bicyclist fatalities in each state. </p>
-
-    <br>
-
+    <!-- First Map Section -->
     <div class="row-flex-container">
+        <!-- Left Column -->
         <div class="flex-item-left">
             <div id="safety-map"></div>
             <div id="safety-tooltip" class="hidden"></div>
             <div id="safety-color-legend"></div>
-            <div class="data-source"> Source: <a href="https://bikeleague.org/bfa/states/"> 2021 Bicycle Friendly State survey</a></div>
         </div>
         <div class="flex-item-right">
-            <div class="trailinfo">
+            <div>
                 <p>Discover the impact of road speed on cycling safety according to <a href="https://highways.dot.gov/safety/proven-safety-countermeasures/bicycle-lanes/">Federal Highway Administration guidelines</a>, which advise protected bike lanes or shared use paths for speeds of 30 miles per hour or more. Data is from <a href="https://bikeleague.org/sites/default/files/Bicycle_Friendly_State_Survey_2021Final.pdf">the 2021 Bicycle Friendly State survey</a> and specifically indicates responses regarding the presence of protected bike lanes on state roadways.</p>
-                <img src="../images/protected_bike_lane.jpg" alt="Protected Bike Lane Image" width="500">
+                <img src="../images/protected_bike_lane.jpg" alt="Protected Bike Lane Image" width="300">
             </div>
         </div>
     </div>
+    <div class="data-source"> Data Source: <a href="https://bikeleague.org/bfa/states/"> 2021 Bicycle Friendly State survey</a></div>
 
-    <br><br><br><br><br><br><br>
+    <br>
+    <br>
+    <br>
 
+    <!-- Second Map Section -->
     <div class="row-flex-container">
         <div class="flex-item-left">
             <div id="safety-map2"></div>
             <div id="safety-tooltip2" class="hidden"></div>
             <div id="safety-color-legend2"></div>
-            <div class="data-source"> 
-                Number based upon a 5-year average from 2017-2021<br>
-                Source: <a href="https://cdan.dot.gov/query">NHTSA Fatality Analysis Reporting System</a></div> 
         </div>
         <div class="flex-item-right">
-            <div class="trailinfo">
+            <div>
                 <p>Explore the varied landscape of cyclist safety across states from 2017 to 2021, with bicyclist fatality rates ranging from 0.2 in South Dakota to a concerning 151.2 in Florida. These figures, however, overlook factors like population differences and biking frequency, offering a nuanced perspective on the issue. For detailed information on fatalities and injuries, visit <a href="https://cdan.dot.gov/query" target="_blank">Fatality and Injury Reporting System Tool (FIRST)</a> of the NHTSA (National Highway Traffic Safety Administration).</p>
-                <img src="../images/bicycle_fatality.jpg" alt="Bicycle Accident Image" width="500">
+                <img src="../images/bicycle_fatality.jpg" alt="Bicycle Accident Image" width="300">
             </div>
         </div>
     </div>
 
-    <br><br><br><br>
+    <div class="data-source"> 
+        Fatalities: an average of persons involved in fatal crashes in five years (2017-2022)<br>
+        Data Source: <a href="https://cdan.dot.gov/query">NHTSA Fatality Analysis Reporting System</a></div> 
 
-    <!-- Chart 1 -->
+    <br>
+    <br>
+    <br>
+
+    <!-- Chart Section -->
     <div class="row-flex-container">
-        <div class="flex-item-left chart-container-left"> <!-- Add chart-container-left class -->
+        <div class="chart-container-left">
             <div id="safety-chart1"></div>
-            <div class="data-source"> 
-                Bicyclist Fatality Rate = Average Bicyclist Fatality (2017-2021) / population x 1000,000 <br>
-                Source: <a href="https://cdan.dot.gov/query">NHTSA Fatality Analysis Reporting System</a>
-            </div> 
         </div>
-        <div class="flex-item-right">
-            <div class="trailinfo">
-                <!-- Content for the first chart -->
-            </div>
+        <div class="chart-container-right">
+           <div id="safety-chart2"></div>
         </div>
     </div>
 
-    <br><br><br><br>
-    
-    <!-- Chart 2 -->
-    <div class="row-flex-container">
-        <div class="flex-item-left chart-container-right"> <!-- Add chart-container-right class -->
-            <div id="safety-chart2"></div>
-            <div class="data-source"> 
-                Bicyclist Fatality Rate = Average Bicyclist Fatality (2017-2021) / population x 1000,000 <br>
-                Source: <a href="https://cdan.dot.gov/query">NHTSA Fatality Analysis Reporting System</a>
-            </div> 
-        </div>
-        <div class="flex-item-right">
-            <div class="trailinfo">
-                <!-- Content for the second chart -->
-            </div>
-        </div>
-    </div>
+    <div class="data-source"> 
+        Bicyclist Fatality Rate = Average Bicyclist Fatality (2017-2021) / population x 1000,000 <br>
+        Data Source: <a href="https://cdan.dot.gov/query">NHTSA Fatality Analysis Reporting System</a>
+    </div> 
 
+    <br>
+
+    <!-- External Scripts -->
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="https://d3js.org/topojson.v3.min.js"></script>
     <script src="safety-map.js"></script>
     <script src="safety-map2.js"></script>
     <script src="safety-chart1.js"></script>
     <script src="safety-chart2.js"></script>
+
 </body>
 
 </html>

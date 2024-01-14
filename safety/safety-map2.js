@@ -85,7 +85,7 @@ d3.json("https://d3js.org/us-10m.v1.json").then(function (us) {
         .attr("text-anchor", "middle")
         .style("font-size", "20px")
         .style("font-weight", "bold")
-        .text("Bicyclist Fatalities by State");
+        .text("Bicyclist Fatalities in Each U.S. State");
 
     // Use D3 to draw map paths and color them based on the Number_of_Bicyclist_Fatalities
     d3.csv("data/bicyclist-fatalities-by-state.csv").then(function (csvData2) {
@@ -121,15 +121,9 @@ d3.json("https://d3js.org/us-10m.v1.json").then(function (us) {
                 safetyTooltip2.html(`<strong>${stateName}</strong><br>Fatalities: ${fatalities}`);
 
                 // Show tooltip in a fixed position to the right of the map
-                const tooltipLeft = safetyWidth2 + 10; // Adjust the left position
-                const tooltipTop = event.pageY - safetyTooltip2.node().offsetHeight / 2; // Center tooltip vertically
-
                 safetyTooltip2.classed("hidden", false)
-                    .style("left", tooltipLeft + "px")
-                    .style("top", tooltipTop + "px");
-            })
-            .on("mousemove", function (event) {
-                // No need to update tooltip position on mousemove as it's fixed
+                    .style("left", event.pageX + 10 + "px")
+                    .style("top", event.pageY + 10 + "px");
             })
             .on("mouseout", function () {
                 // Hide tooltip on mouseout
@@ -163,8 +157,9 @@ d3.json("https://d3js.org/us-10m.v1.json").then(function (us) {
         });
 
         // Set legend position
-        const legendTop2 = safetyHeight2 + 200; // 
-        const legendLeft2 = safetyWidth2 / 6 - (legendLabels2.length * 20);
+        const legendHeight = 30; 
+        const legendTop = height + 320; 
+        const legendLeft = 200; 
 
         safetyColorLegendContainer2.style("position", "absolute")
             .style("left", legendLeft2 + "px")

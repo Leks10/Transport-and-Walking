@@ -5,7 +5,7 @@
 // Load the data
 d3.csv("data/bicyclist_fatality_rate_highest.csv").then(function(data) {
     // Set up the chart dimensions
-    const margin = { top: 40, right: 20, bottom: 20, left: 40 };
+    const margin = { top: 80, right: 20, bottom: 0, left: 180 };
     const width = window.innerWidth - margin.left - margin.right;
     const height = data.length * 60 - margin.top - margin.bottom;
 
@@ -19,10 +19,11 @@ d3.csv("data/bicyclist_fatality_rate_highest.csv").then(function(data) {
 
     // Add chart title
     svg.append("text")
-        .attr("x", width / 2)
-        .attr("y", -10)
+        .attr("x", 200)
+        .attr("y", -40)
         .attr("text-anchor", "middle")
         .style("font-size", "18px")
+        .style("font-weight", "bold")
         .text("10 States with Highest Bicyclist Fatality Rate");
 
     // Create a group for each bar

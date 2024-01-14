@@ -85,12 +85,7 @@ a:hover {
 }
 
 /* Styles specific to the map page */
-/*
-#map {
-    width: 800px;
-    height: 600px;
-}
-*/
+
 #color-legend {
     position: absolute;
     bottom: 30px;
@@ -113,7 +108,6 @@ a:hover {
     pointer-events: none;
 }
 
-/* Styles for the second map's tooltip */
 #tooltip2 {
     position: absolute;
     background-color: white;
@@ -121,10 +115,9 @@ a:hover {
     padding: 10px;
     z-index: 1;
     font-size: 14px;
-    pointer-events: none; /* Ensure the tooltip does not block mouse events */
+    pointer-events: none; 
 }
 
-/* Styles for the third map's tooltip */
 #tooltip3 {
     position: absolute;
     background-color: white;
@@ -132,12 +125,34 @@ a:hover {
     padding: 10px;
     z-index: 1;
     font-size: 14px;
-    pointer-events: none; /* Ensure the tooltip does not block mouse events */
+    pointer-events: none; 
 }
+
+#safety-tooltip {
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 10px;
+    z-index: 1;
+    font-size: 14px;
+    pointer-events: none; 
+}
+
+#safety-tooltip2 {
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 10px;
+    z-index: 1;
+    font-size: 14px;
+    pointer-events: none; 
+}
+
 
 .hidden {
     display: none;
 }
+
 
 /* tiles */
 .tiles {
@@ -197,6 +212,9 @@ a:hover {
     margin-bottom: 10px;
 }
 
+
+
+/* Styles specific to html */
 .trailinfo {
     max-width: 500px; /* Adjust the maximum width of the container */
     margin: 10px; /* Adjust margins (top right bottom left) */
@@ -214,14 +232,10 @@ a:hover {
 }
 
 .row-flex-container {
-    flex: 1;
-    padding: 20px; /* Add padding as needed */
+    display: flex;
+    padding: 20px; 
 }
 
-.row-flex-container {
-    display: flex;
-    flex-wrap: nowrap;
-}
 
 .flex-item-left {
     flex: 65%;
@@ -272,15 +286,6 @@ a:hover {
     padding: 20px; /* Add some padding for spacing */
 }
 
-#tooltip2 {
-    position: absolute;
-    background-color: white;
-    border: 1px solid #ddd;
-    padding: 10px;
-    z-index: 1;
-    font-size: 14px;
-    pointer-events: none; /* Ensure the tooltip does not block mouse events */
-}
 
 /* Styles for the second map's color legend */
 #safetyColorLegendContainer2 {
@@ -291,13 +296,12 @@ a:hover {
 }
 
 .data-source {
-    text-align: left;
-    margin-top: 50px; /* Adjust the margin as needed */
-    margin-left: 45px; /* Adjust the left margin as needed */
+    text-align: center; /* Center the text for consistency */
+    margin-top: 10px; /* Adjust the top margin as needed */
     color: #777; /* Set the color for the text */
 }
 
-/* Adjust the width for the charts */
+/* Styles for charts */
 #safety-chart1,
 #safety-chart2 {
     box-sizing: border-box;
@@ -305,13 +309,48 @@ a:hover {
     float: left; /* Float the charts to make them side by side */
 }
 
-/* Ensure the last chart clears the float */
-#safety-chart2 {
-    clear: right; /* Clear the float to move to the next row */
+.chart-container-left {
+    background-color: #fff; /* Set a background color for the chart containers */
+    border-radius: 10px; /* Add rounded corners for a cleaner look */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow for depth */
+    margin: 20px; /* Adjust the margin for spacing */
+    padding: 20px; /* Add padding for content spacing */
+    flex: 35%
+}
+.chart-container-right {
+    background-color: #fff; /* Set a background color for the chart containers */
+    border-radius: 10px; /* Add rounded corners for a cleaner look */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow for depth */
+    margin: 20px; /* Adjust the margin for spacing */
+    padding: 20px; /* Add padding for content spacing */
+    flex: 65%
 }
 
-/* Additional styling for the charts */
+#safety-chart1 h2,
+#safety-chart2 h2 {
+    color: #4285f4;
+    margin: 0;
+    padding: 15px 0;
+    text-align: left; 
+    font-size: 20px;
+}
+
 #safety-chart1 svg,
 #safety-chart2 svg {
     width: 100%; /* Set the width of the chart within its container */
+    border: 1px solid #ddd; /* Add a border for separation */
+    border-radius: 8px; /* Add rounded corners for a cleaner look */
+    overflow: hidden; /* Hide any overflow content */
 }
+
+.bar-group text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#safety-chart1 img,
+#safety-chart2 img {
+    width: 80%; /* Adjust the width of the image */
+}
+

@@ -4,11 +4,11 @@
 // Load the data
 d3.csv("data/bicyclist_fatality_rate_lowest.csv").then(function(data) {
     // Set up the chart dimensions
-    const margin = { top: 40, right: 20, bottom: 20, left: 40 };
+    const margin = { top: 80, right: 20, bottom: 0, left: 150 };
     const width = window.innerWidth - margin.left - margin.right;
     const height = data.length * 60 - margin.top - margin.bottom;
 
-    // Create an SVG element with adjusted position
+    // Update the width and height as needed
     const svg = d3.select("#safety-chart1")
         .append("svg")
         .attr("width", width + margin.left + margin.right)
@@ -18,10 +18,11 @@ d3.csv("data/bicyclist_fatality_rate_lowest.csv").then(function(data) {
 
     // Add chart title
     svg.append("text")
-        .attr("x", width / 2)
-        .attr("y", -10) // Adjust the vertical position to provide more space
+        .attr("x", 50)
+        .attr("y", -40) 
         .attr("text-anchor", "middle")
         .style("font-size", "18px")
+        .style("font-weight", "bold")
         .text("10 States with Lowest Bicyclist Fatality Rate");
 
     // Create a group for each bar
@@ -33,7 +34,7 @@ d3.csv("data/bicyclist_fatality_rate_lowest.csv").then(function(data) {
     // Add bars
     barGroup.append("rect")
         .attr("x", 0)
-        .attr("width", d => d["Bicyclist Fatality Rate"] * 70)
+        .attr("width", d => d["Bicyclist Fatality Rate"] * 50)
         .attr("height", 35)
         .attr("fill", "#3182bd");
 
