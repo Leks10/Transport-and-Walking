@@ -8,4 +8,4 @@ I then renamed the remaining columns with underscore
 - Number_of_Rail_Trails (Number of Rail Trails)
 - Miles_of_Rail_Trails (Miles of Rail Trails)
 - Miles_of_Potential_Rail_Trails (Miles of Potential Rail Trails)
-I named the file map_data.
+I named the file to use map_data.
