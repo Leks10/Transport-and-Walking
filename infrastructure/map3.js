@@ -1,4 +1,4 @@
-// Function to convert FIPS code to state name for the second map
+// Function to convert FIPS code to state name for the third map
 function fipsToStateName(fipsCode) {
     const fipsToState = {
         '01': 'Alabama',
@@ -137,7 +137,7 @@ function handleMouseOver(event, d) {
     // Update tooltip content for the third map
     tooltip3.html(`<strong>${stateName}</strong><br>Miles of Potential Rail Trails: ${milesOfPotentialRailTrails}`);
 
-    // Show tooltip to the right of the second map
+    // Show tooltip to the right of the third map
     const tooltipLeft = width3 + 10; // Adjust the left position
     const tooltipTop = event.pageY - tooltip3.node().offsetHeight / 2; // Center tooltip vertically
 

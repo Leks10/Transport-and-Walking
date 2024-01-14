@@ -1,4 +1,4 @@
-// Function to convert FIPS code to state name
+// Function to convert FIPS code to state name for first map
 function fipsToStateName(fipsCode) {
     const fipsToState = {
         '01': 'Alabama',
